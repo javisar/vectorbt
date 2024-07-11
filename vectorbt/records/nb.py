@@ -239,7 +239,7 @@ def apply_on_mapped_nb(mapped_arr: tp.Array1d, col_map: tp.ColMap,
     and `*args`, and return an array."""
     col_idxs, col_lens = col_map
     col_start_idxs = np.cumsum(col_lens) - col_lens
-    out = np.empty(mapped_arr.shape[0], dtype=np.float_)
+    out = np.empty(mapped_arr.shape[0], dtype=np.float64)
 
     for col in range(col_lens.shape[0]):
         col_len = col_lens[col]
@@ -261,7 +261,7 @@ def apply_on_records_nb(records: tp.RecordArray, col_map: tp.ColMap,
     `apply_func_nb` should accept the records of the column and `*args`, and return an array."""
     col_idxs, col_lens = col_map
     col_start_idxs = np.cumsum(col_lens) - col_lens
-    out = np.empty(records.shape[0], dtype=np.float_)
+    out = np.empty(records.shape[0], dtype=np.float64)
 
     for col in range(col_lens.shape[0]):
         col_len = col_lens[col]
@@ -278,7 +278,7 @@ def map_records_nb(records: tp.RecordArray, map_func_nb: tp.RecordMapFunc[float]
     """Map each record to a single value.
 
     `map_func_nb` should accept a single record and `*args`, and return a single value."""
-    out = np.empty(records.shape[0], dtype=np.float_)
+    out = np.empty(records.shape[0], dtype=np.float64)
 
     for r in range(records.shape[0]):
         out[r] = map_func_nb(records[r], *args)
@@ -398,7 +398,7 @@ def reduce_mapped_nb(mapped_arr: tp.Array1d, col_map: tp.ColMap, fill_value: flo
     and return a single value."""
     col_idxs, col_lens = col_map
     col_start_idxs = np.cumsum(col_lens) - col_lens
-    out = np.full(col_lens.shape[0], fill_value, dtype=np.float_)
+    out = np.full(col_lens.shape[0], fill_value, dtype=np.float64)
 
     for col in range(col_lens.shape[0]):
         col_len = col_lens[col]
@@ -421,7 +421,7 @@ def reduce_mapped_to_idx_nb(mapped_arr: tp.Array1d, col_map: tp.ColMap, idx_arr:
         Must return integers or raise an exception."""
     col_idxs, col_lens = col_map
     col_start_idxs = np.cumsum(col_lens) - col_lens
-    out = np.full(col_lens.shape[0], fill_value, dtype=np.float_)
+    out = np.full(col_lens.shape[0], fill_value, dtype=np.float64)
 
     for col in range(col_lens.shape[0]):
         col_len = col_lens[col]
@@ -450,7 +450,7 @@ def reduce_mapped_to_array_nb(mapped_arr: tp.Array1d, col_map: tp.ColMap, fill_v
             break
 
     col_out = reduce_func_nb(col0, mapped_arr[idxs0], *args)
-    out = np.full((col_out.shape[0], col_lens.shape[0]), fill_value, dtype=np.float_)
+    out = np.full((col_out.shape[0], col_lens.shape[0]), fill_value, dtype=np.float64)
     out[:, col0] = col_out
 
     for col in range(col0 + 1, col_lens.shape[0]):
@@ -482,7 +482,7 @@ def reduce_mapped_to_idx_array_nb(mapped_arr: tp.Array1d, col_map: tp.ColMap, id
             break
 
     col_out = reduce_func_nb(col0, mapped_arr[idxs0], *args)
-    out = np.full((col_out.shape[0], col_lens.shape[0]), fill_value, dtype=np.float_)
+    out = np.full((col_out.shape[0], col_lens.shape[0]), fill_value, dtype=np.float64)
     out[:, col0] = idx_arr[idxs0][col_out]
 
     for col in range(col0 + 1, col_lens.shape[0]):

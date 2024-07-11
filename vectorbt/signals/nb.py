@@ -904,7 +904,7 @@ def generate_ohlc_stop_ex_nb(entries: tp.Array2d,
         >>> high_price = entry_price + 1
         >>> low_price = entry_price - 1
         >>> close_price = entry_price
-        >>> stop_price_out = np.full_like(entries, np.nan, dtype=np.float_)
+        >>> stop_price_out = np.full_like(entries, np.nan, dtype=np.float64)
         >>> stop_type_out = np.full_like(entries, -1, dtype=np.int_)
 
         >>> generate_ohlc_stop_ex_nb(
@@ -1264,7 +1264,7 @@ def norm_avg_index_1d_nb(a: tp.Array1d) -> float:
 @njit(cache=True)
 def norm_avg_index_nb(a: tp.Array2d) -> tp.Array1d:
     """2-dim version of `norm_avg_index_1d_nb`."""
-    out = np.empty(a.shape[1], dtype=np.float_)
+    out = np.empty(a.shape[1], dtype=np.float64)
     for col in range(a.shape[1]):
         out[col] = norm_avg_index_1d_nb(a[:, col])
     return out

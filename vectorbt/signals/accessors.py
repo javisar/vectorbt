@@ -976,7 +976,7 @@ class SignalsAccessor(GenericAccessor):
             entries, open, high, low, close, sl_stop, sl_trail, tp_stop, reverse, *out_args,
             **broadcast_kwargs, keep_raw=keep_raw)
         if stop_price_out is None:
-            stop_price_out = np.empty_like(entries, dtype=np.float_)
+            stop_price_out = np.empty_like(entries, dtype=np.float64)
         else:
             stop_price_out = out_args[0]
             out_args = out_args[1:]
@@ -1443,7 +1443,7 @@ class SignalsAccessor(GenericAccessor):
         See `vectorbt.generic.accessors.GenericAccessor.to_mapped`.
 
         Only True values will be considered."""
-        indices = np.arange(len(self.wrapper.index), dtype=np.float_)[:, None]
+        indices = np.arange(len(self.wrapper.index), dtype=np.float64)[:, None]
         indices = np.tile(indices, (1, len(self.wrapper.columns)))
         indices = reshape_fns.soft_to_ndim(indices, self.wrapper.ndim)
         indices[~self.obj.values] = np.nan

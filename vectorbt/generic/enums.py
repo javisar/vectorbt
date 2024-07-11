@@ -78,9 +78,9 @@ drawdown_dt = np.dtype([
     ('start_idx', np.int_),
     ('valley_idx', np.int_),
     ('end_idx', np.int_),
-    ('peak_val', np.float_),
-    ('valley_val', np.float_),
-    ('end_val', np.float_),
+    ('peak_val', np.float64),
+    ('valley_val', np.float64),
+    ('end_val', np.float64),
     ('status', np.int_),
 ], align=True)
 """_"""

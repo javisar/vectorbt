@@ -55,7 +55,7 @@ Consider the following example:
 ...     ('id', np.int_),
 ...     ('col', np.int_),
 ...     ('idx', np.int_),
-...     ('some_field', np.float_)
+...     ('some_field', np.float64)
 ... ])
 >>> records_arr = np.array([
 ...     (0, 0, 0, 10.),

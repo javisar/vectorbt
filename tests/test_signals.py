@@ -2130,7 +2130,7 @@ class TestFactory:
             ),
             in_output_settings=dict(
                 in_out2=dict(
-                    dtype=np.float_
+                    dtype=np.float64
                 )
             ),
             in_out2=np.nan,
@@ -2183,7 +2183,7 @@ class TestFactory:
             ),
             in_output_settings=dict(
                 in_out2=dict(
-                    dtype=np.float_
+                    dtype=np.float64
                 )
             ),
             in_out2=np.nan,
@@ -2286,7 +2286,7 @@ class TestFactory:
             ),
             in_output_settings=dict(
                 in_out2=dict(
-                    dtype=np.float_
+                    dtype=np.float64
                 )
             ),
             in_out2=np.nan,
@@ -2430,10 +2430,10 @@ class TestFactory:
             ),
             in_output_settings=dict(
                 in_out1=dict(
-                    dtype=np.float_
+                    dtype=np.float64
                 ),
                 in_out2=dict(
-                    dtype=np.float_
+                    dtype=np.float64
                 )
             ),
             in_out1=np.nan,

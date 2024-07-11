@@ -1861,7 +1861,7 @@ class TestChecks:
             checks.assert_instance_of(0, np.zeros(1))
 
     def test_assert_dtype(self):
-        checks.assert_dtype(np.zeros(1), np.float_)
+        checks.assert_dtype(np.zeros(1), np.float64)
         checks.assert_dtype(pd.Series([1, 2, 3]), np.int_)
         checks.assert_dtype(pd.DataFrame({'a': [1, 2], 'b': [3, 4]}), np.int_)
         with pytest.raises(Exception):
